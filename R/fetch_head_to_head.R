@@ -21,6 +21,7 @@
 ##'  \item loser. Character name of loser of match
 ##'  \item score. Character of score
 ##'}
+
 fetch_head_to_head <- function(player1, player2, atp = TRUE){
 
 	player1 <- gsub(" ","_",player1)

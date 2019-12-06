@@ -9,6 +9,9 @@
 #' @param advantage Logical if advantage set match (TRUE) or tiebreak match (FALSE)
 #'
 #' @return Numeric value of importance
+#' 
+#' @export
+
 importance <- function (id, serve.prob, return.prob, bestof3 = TRUE, advantage = TRUE) 
 {
 	
@@ -98,6 +101,5 @@ importance <- function (id, serve.prob, return.prob, bestof3 = TRUE, advantage =
 	
 win - lost
 }
-
 
 importance <- Vectorize(importance)

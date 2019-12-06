@@ -1,3 +1,8 @@
+#' Tidy Rankings Data
+#' 
+#' This tidy's the ranknings from the imported data
+#' 
+#'  
 #' @export
 tidy_rankings_data <- function(data){
 	
@@ -16,3 +21,4 @@ tidy_rankings_data <- function(data){
 
 data
 }
+

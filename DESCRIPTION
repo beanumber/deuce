@@ -10,13 +10,21 @@ Description: A collection of data sources and tools for
     extracting data for professional men's and women's tennis. The data ranges from
     shot-level to match-level data.
 Depends:
-    R (>= 2.10),
-    jsonlite,
-    dplyr,
-    stringr,
-    lubridate,
-    rvest
-Suggests: knitr, rmarkdown
+    R (>= 2.10)
+Suggests: 
+    dplyr
 VignetteBuilder: knitr    
 License: GPL-2
+LazyData: true
+Roxygen: list(Markdown = TRUE)
 RoxygenNote: 6.1.1
+Imports:
+    dplyr,
+    knitr, 
+    rmarkdown, 
+    scales, 
+    rvest,
+    jsonlite,
+    rvest,
+    lubridate,
+    stringr

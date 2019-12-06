@@ -1,3 +1,7 @@
+#' Tidy Player Data
+#' 
+#' This function tidy's the player's name to by uniform across all imported data
+#' 
 #' @export
 tidy_player_data <- function(data){
 	

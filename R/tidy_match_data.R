@@ -1,4 +1,9 @@
-#' @export
+#' Tidy Match Data
+#' 
+#' This function tidy's match data at the game level  
+#'   
+#'@export
+#'
 tidy_match_data <- function(data, atp = T){
 		
 	# Parse scores 

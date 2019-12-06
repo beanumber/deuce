@@ -5,8 +5,8 @@
 #' @param event Character value of slam and one of: 'ausopen', 'wimbledon', 'usopen', or 'frenchopen'
 #' @param year Numeric year
 #'
-#'
 #' @export
+#' 
 #' @details This has been tested for 2017. Previous years may not be available as data is archived or site domains have changed.
 #' @return data frame of point by point results
 ##' \itemize{
@@ -35,6 +35,7 @@
 ##'  \item Player1. Character of Player 1 name
 ##'  \item Player2. Character of PLayer 2 name
 ##'}
+##'
 fetch_slam_pbp <- function(event, year){
 	
 	warn <- options("warn")[[1]]
