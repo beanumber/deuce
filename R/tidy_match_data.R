@@ -1,8 +1,13 @@
 #' Tidy Match Data
 #' 
-#' This function tidy's match data at the game level  
+#' This function tidy's match data at the game level 
+#' 
+#' @param data A data table containing Match data
+#' 
+#' @example 
+#'  wta_matches <- tidy_match_data(wta_matches, atp = F)
 #'   
-#'@export
+#' @export
 #'
 tidy_match_data <- function(data, atp = T){
 		

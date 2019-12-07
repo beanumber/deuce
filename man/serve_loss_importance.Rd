@@ -4,8 +4,13 @@
 \alias{serve_loss_importance}
 \title{Calculate Loss Importance for a Point}
 \usage{
-serve_loss_importance(id, serve.prob, return.prob, bestof3 = TRUE,
-  advantage = TRUE)
+serve_loss_importance(
+  id,
+  serve.prob,
+  return.prob,
+  bestof3 = TRUE,
+  advantage = TRUE
+)
 }
 \arguments{
 \item{id}{Score id for the start of the current point}

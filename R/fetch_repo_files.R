@@ -1,8 +1,9 @@
 #' Scrapes CSV files from GITHUB repository
 #' 
-#' @param. url The repo URL address
+#' @param url The repo URL address
 #' 
 #' @export
+#' 
 fetch_repo_files <- function(url){
 	
 	page <- read_html(url) 

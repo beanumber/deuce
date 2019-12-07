@@ -4,8 +4,18 @@
 \alias{in_match_win}
 \title{Conditional Match Win Prediction}
 \usage{
-in_match_win(point_a, point_b, game_a, game_b, set_a, set_b, server.prob,
-  returner.prob, bestof3 = TRUE, advantage = TRUE)
+in_match_win(
+  point_a,
+  point_b,
+  game_a,
+  game_b,
+  set_a,
+  set_b,
+  server.prob,
+  returner.prob,
+  bestof3 = TRUE,
+  advantage = TRUE
+)
 }
 \arguments{
 \item{point_a}{Numeric game points won by current server at start of point}

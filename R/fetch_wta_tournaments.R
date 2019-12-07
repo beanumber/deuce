@@ -4,7 +4,8 @@
 #'
 #'
 #' @export
-fetch_wta_tournaments <- function(VOID){
+#' 
+fetch_wta_tournaments <- function(...){
 	
 	url <- "http://www.wtatennis.com/calendar"
 	

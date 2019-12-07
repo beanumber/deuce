@@ -5,6 +5,7 @@
 #' @param date A character date for extracting rankings, YYYY-MM-DD
 #' @param min_rank A numeric for the highest ranked player to include
 #' @param max_rank A numeric for the lowest ranked player to include
+#' @param singles Logical; True if match is singles, False if not
 #'
 #' @examples
 #' fetch_atp_rankings("2017-01-01")

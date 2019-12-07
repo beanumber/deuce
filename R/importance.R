@@ -3,7 +3,7 @@
 #' This function calculates the match win prediction for matches in progress based on the current score
 #'
 #' @param id Score id for the start of the current point
-#' @param server.prob Numeric serve win prob of current server
+#' @param serve.prob Numeric serve win prob of current server
 #' @param return.prob Numeric serve win prob of current returner
 #' @param bestof3 Logical indicator if best-of-3 match (TRUE) or best-of-5 (FALSE)
 #' @param advantage Logical if advantage set match (TRUE) or tiebreak match (FALSE)
@@ -11,6 +11,7 @@
 #' @return Numeric value of importance
 #' 
 #' @export
+#' 
 
 importance <- function (id, serve.prob, return.prob, bestof3 = TRUE, advantage = TRUE) 
 {

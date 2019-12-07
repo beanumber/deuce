@@ -2,7 +2,13 @@
 #' 
 #' This function tidy's the player's name to by uniform across all imported data
 #' 
+#' @param data A data table containing player data
+#' 
+#' @example 
+#'  atp_rankings <- tidy_rankings_data(atp_rankings)
+#' 
 #' @export
+#' 
 tidy_player_data <- function(data){
 	
 	names(data) <- c(

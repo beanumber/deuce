@@ -1,6 +1,15 @@
 #' Fetch Odds Data for Slam Matches
 #'
+#' This function extracts official match data from Tennis-data.co.uk
+#' 
+#' @param atp Logical; True if Men's ATP match, False if not
+#'
+#' @examples 
+#'  atp_odds <- fetch_odds(atp = T)
+#'  wta_odds <- fetch_odds(atp = F)
+#'
 #' @export
+#' 
 fetch_odds <- function(atp = T){
 	
 	events <- c(

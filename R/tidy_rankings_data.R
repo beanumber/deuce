@@ -2,6 +2,7 @@
 #' 
 #' This tidy's the ranknings from the imported data
 #' 
+#' @param data A data table containing player ranking data  
 #'  
 #' @export
 tidy_rankings_data <- function(data){
