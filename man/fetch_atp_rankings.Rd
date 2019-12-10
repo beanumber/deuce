@@ -12,6 +12,8 @@ fetch_atp_rankings(date, min_rank = 1, max_rank = 100, singles = T)
 \item{min_rank}{A numeric for the highest ranked player to include}
 
 \item{max_rank}{A numeric for the lowest ranked player to include}
+
+\item{singles}{Logical; True if match is singles, False if not}
 }
 \value{
 data frame of rankings for the specified week

@@ -40,7 +40,7 @@ fetch_atp_tournaments <- function(challenger = FALSE){
 
 
 		prize_extract <- function(x){
-			numbers <- str_extract_all(x, "[0-9]")
+			numbers <- stringr::str_extract_all(x, "[0-9]")
 			numbers <- collapse(numbers[[1]])
 			location <- str_locate(x, "[0-9]")[1]
 			currency <- substr(x, location - 1, location - 1)

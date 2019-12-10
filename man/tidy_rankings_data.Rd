@@ -6,6 +6,9 @@
 \usage{
 tidy_rankings_data(data)
 }
+\arguments{
+\item{data}{A data table containing player ranking data}
+}
 \description{
 This tidy's the ranknings from the imported data
 }

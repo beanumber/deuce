@@ -9,13 +9,13 @@ importance(id, serve.prob, return.prob, bestof3 = TRUE, advantage = TRUE)
 \arguments{
 \item{id}{Score id for the start of the current point}
 
+\item{serve.prob}{Numeric serve win prob of current server}
+
 \item{return.prob}{Numeric serve win prob of current returner}
 
 \item{bestof3}{Logical indicator if best-of-3 match (TRUE) or best-of-5 (FALSE)}
 
 \item{advantage}{Logical if advantage set match (TRUE) or tiebreak match (FALSE)}
-
-\item{server.prob}{Numeric serve win prob of current server}
 }
 \value{
 Numeric value of importance

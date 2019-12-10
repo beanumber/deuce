@@ -6,6 +6,9 @@
 \usage{
 tidy_point_by_point(data)
 }
+\arguments{
+\item{data}{A data table containing point data}
+}
 \description{
 Tidy Point-by-Point Data from Source
 }

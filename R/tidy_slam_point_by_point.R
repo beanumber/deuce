@@ -4,7 +4,7 @@
 #' This function takes two data sets and returns a combined data set with every point in every match  
 #'  
 #' @param points A data set with detail of every point in a match
-#' @param mathces A data set with detail of every match
+#' @param matches A data set with detail of every match
 #' 
 #' @example
 #'  tidy_slam_point_by_point(point_by_point, point_by_matches)

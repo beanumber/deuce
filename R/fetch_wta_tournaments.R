@@ -1,6 +1,8 @@
 #' Download Current WTA Calendar
 #'
 #' This function downloads the WTA calendar
+#' 
+#' @param ... other options passed to fetch_wta_tournaments
 #'
 #'
 #' @export

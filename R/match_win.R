@@ -11,6 +11,7 @@
 #' match_win(serve = 0.65, return = 0.20) # Best of 3
 #' match_win(serve = 0.65, return = 0.20, bestof3 = F) # Best of 5
 #' @export
+#' 
 
 match_win <- function(serve, return, bestof3 = TRUE){
 	

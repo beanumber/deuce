@@ -6,6 +6,9 @@
 \usage{
 tidy_player_data(data)
 }
+\arguments{
+\item{data}{A data table containing player data}
+}
 \description{
 This function tidy's the player's name to by uniform across all imported data
 }

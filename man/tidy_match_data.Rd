@@ -6,6 +6,11 @@
 \usage{
 tidy_match_data(data, atp = T)
 }
+\arguments{
+\item{data}{A data table containing Match data}
+
+\item{atp}{Logical, TRUE if ATP match, FALSE if WTA match}
+}
 \description{
 This function tidy's match data at the game level
 }

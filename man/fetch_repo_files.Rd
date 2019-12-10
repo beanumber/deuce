@@ -7,7 +7,7 @@
 fetch_repo_files(url)
 }
 \arguments{
-\item{.}{url The repo URL address}
+\item{url}{The repo URL address}
 }
 \description{
 Scrapes CSV files from GITHUB repository

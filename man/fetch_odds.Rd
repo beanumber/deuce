@@ -6,6 +6,14 @@
 \usage{
 fetch_odds(atp = T)
 }
+\arguments{
+\item{atp}{Logical; True if Men's ATP match, False if not}
+}
 \description{
-Fetch Odds Data for Slam Matches
+This function extracts official match data from Tennis-data.co.uk
+}
+\examples{
+ atp_odds <- fetch_odds(atp = T)
+ wta_odds <- fetch_odds(atp = F)
+
 }

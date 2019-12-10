@@ -4,7 +4,10 @@
 \alias{fetch_wta_tournaments}
 \title{Download Current WTA Calendar}
 \usage{
-fetch_wta_tournaments(VOID)
+fetch_wta_tournaments(...)
+}
+\arguments{
+\item{...}{other options passed to fetch_wta_tournaments}
 }
 \description{
 This function downloads the WTA calendar
