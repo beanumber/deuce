@@ -306,14 +306,14 @@ gs_point_by_point <- gs_point_by_point %>%
   )
 
 
-gs_point_by_point %>%
-  filter(!is.na(ServeNumber), Speed_MPH != 0) %>%
-  ggplot(aes(y = Speed_MPH, x = Tour, fill = Tour)) + 
-  geom_boxplot(alpha = 0.5) + 
-  scale_fill_tableau() + 
-  theme_gdocs() + theme(legend.position = "none") + 
-  facet_grid(. ~ factor(ServeNumber, labels = c("First Serve", "Second Serve"))) + 
-  scale_y_continuous("Service Speed (MPH)", breaks = scales::pretty_breaks(n = 10)) 
+#gs_point_by_point %>%
+  #filter(!is.na(ServeNumber), Speed_MPH != 0) %>%
+  #ggplot(aes(y = Speed_MPH, x = tour, fill = tour)) + 
+  #geom_boxplot(alpha = 0.5) + 
+  #scale_fill_tableau() + 
+  #theme_gdocs() + theme(legend.position = "none") + 
+  #facet_grid(. ~ factor(ServeNumber, labels = c("First Serve", "Second Serve"))) + 
+  #scale_y_continuous("Service Speed (MPH)", breaks = scales::pretty_breaks(n = 10)) 
 ```
 
 These summaries suggest that first serve speed are generally around 115 mph for men and 108 for women. Both tours serve notably slower on the second serve, dropping about 20 mph on average. This reflects the more conservative nature of the second server.

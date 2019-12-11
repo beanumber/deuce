@@ -1,10 +1,11 @@
 deuce
 =====
 
-## Package Overview
+## Overview
 
-`deuce` is an R package that provides easy access to a rich set of online data on professional tennis. By making tennis data more available to R users, `deuce` aims to be a useful tool for tennis analysts and a fun resource for teachers of statistics.
+The goal of `deuce` is to provide east access to many different sets of online data on professional tennis. By making tennis data more availible to R users, `deuce` aims to be a useful tool for tennis analysts and a fun resource for teachers of statistics. 
 
+Please check out [this guide](https://github.com/skoval/deuce/blob/master/inst/doc/deuce.Rmd) if you are new to tennis analytics.
 
 ## Installation
 
@@ -14,7 +15,7 @@ To install in R, use the `devtools` package and the following:
 
 `install_github("skoval/deuce")`
 
-There are 274 MB of data included with the package so the installation may take several minutes. 
+Caution: there are 274 MB of data included with the package so the installation may take several minutes. 
 
 
 ## Learning about Contents
