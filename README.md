@@ -1,7 +1,7 @@
 deuce
 =====
 
-[![Travis-CI Build Status](https://travis-ci.org/kvanallen/deuce)
+[![Build Status](https://travis-ci.org/kvanallen/deuce.svg?branch=master)](https://travis-ci.org/kvanallen/deuce)
 
 ## Overview
 
