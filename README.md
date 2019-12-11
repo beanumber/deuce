@@ -1,11 +1,13 @@
 deuce
 =====
 
+[![Travis-CI Build Status](https://travis-ci.org/kvanallen/deuce)
+
 ## Overview
 
-The goal of `deuce` is to provide east access to many different sets of online data on professional tennis. By making tennis data more availible to R users, `deuce` aims to be a useful tool for tennis analysts and a fun resource for teachers of statistics. 
+The goal of `deuce` is to provide east access to many different sets of online data on professional tennis. By making tennis data more available to R users, `deuce` aims to be a useful tool for tennis analysts and a fun resource for teachers of statistics. 
 
-Please check out [this guide](https://github.com/skoval/deuce/blob/master/inst/doc/deuce.Rmd) if you are new to tennis analytics.
+If you are new to tennis analytics, please check out [this guide](https://github.com/skoval/deuce/blob/master/inst/doc/deuce.Rmd).
 
 ## Installation
 
@@ -18,7 +20,7 @@ To install in R, use the `devtools` package and the following:
 Caution: there are 274 MB of data included with the package so the installation may take several minutes. 
 
 
-## Learning about Contents
+## About the Contents
 
 To find out about the datasets and functions included in `deuce`, you can use the following command to bring up the package index.
 
@@ -47,7 +49,7 @@ An example of one of the data-scraping functions is `fetch_activity`. When conne
 
 `fetch_activity("Rafael Nadal", 2017)`
 
-There are also serveral `tidy` functions for pre-processing the major datasets that are included with the package. 
+There are also several `tidy` functions for pre-processing the major datasets that are included with the package. 
 
 For users interested in updating or running their own player Elo ratings, I would recommend looking at the Rcpp implementation of @martiningram, which you can find [here](https://github.com/martiningram/tennisratingscpp)
 
