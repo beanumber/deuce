@@ -74,8 +74,8 @@ library(ggplot2)
 library(ggthemes)
 library(scales)
 
-data("atp_matches")
-data("wta_matches")
+#data("atp_matches")
+#data("wta_matches")
 
 # Subset matches to first round at grand slams
 atp_matches <- atp_matches %>%
@@ -119,8 +119,8 @@ Because Elo ratings are constantly changing as players complete matches, we can 
 We can use the `atp_elo` and `wta_elo` datasets to answer this question. Although the dataset includes surface-specific Elo, we will use the all-surface overall Elo ratings for this analysis.
 
 ```{r warning = FALSE, fig.height = 5, fig.width = 6}
-data("atp_elo")
-data("wta_elo")
+#data("atp_elo")
+#data("wta_elo")
 
 peak_atp_elo <- atp_elo %>%
     group_by(player_name) %>%
@@ -177,7 +177,7 @@ For recent years, the `atp_matches` provides several match-level summary stats. 
 In the code below, we consider the Pythagorean relationship of each stat in 2016 with the win records in 2017. To remove less competitive players from full-time professionals, we limit the assessment to players with 50 matches or more played and who appeared in at least one Grand Slam event.
 
 ```{r warning = FALSE, fig.height = 5, fig.width = 6}
-data("atp_matches")
+#data("atp_matches")
 
 atp_2016 <- atp_matches %>%
   filter(year == 2016) %>%
@@ -268,7 +268,7 @@ Let's use the `wta matches` results at Grand Slam and Premier events to rate the
 ```{r warning = FALSE}
 library(BradleyTerry2)
 
-data("wta_matches")
+#data("wta_matches")
 
 wta_matches <- wta_matches %>%
   filter(year == 2017, tourney_level %in% c("Grand Slams", "Premier","Premier Mandatory")) %>%
@@ -296,7 +296,7 @@ We see a lot of familiar names. Serena Williams takes the top position, though t
 As much fun as match statistics are, they don't give us a real feel for the physical power of the professional game. One power stat that we have more public data on than any other are service speeds. In the **deuce** package, thanks to data provided by _The Tennis Abstract_, service speed data is available for the past several years at the Grand Slams. We can use this to look at how speeds differ between first and second serves and the men's and women's tours.
 
 ```{r warning = FALSE, fig.height = 5, fig.width = 6}
-data("gs_point_by_point")
+#data("gs_point_by_point")
 
 gs_point_by_point <- gs_point_by_point %>%
   dplyr::mutate(
@@ -328,7 +328,7 @@ The [Match Charting Project](http://www.tennisabstract.com/charting/meta.html) i
 
 
 ```{r warning = FALSE, fig.height = 5, fig.width = 6}
-data("mcp_points")
+#data("mcp_points")
 
 # Cound double faults as 1 shot
 mcp_points <- mcp_points %>%

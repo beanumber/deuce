@@ -34,8 +34,8 @@ library(ggplot2)
 library(ggthemes)
 library(scales)
 
-data("atp_matches")
-data("wta_matches")
+#data("atp_matches")
+#data("wta_matches")
 
 # Subset matches to first round at grand slams
 atp_matches <- atp_matches %>%
@@ -68,8 +68,8 @@ ages %>%
   ggtitle("Aging Trends Among Grand Slam Players")
 
 ## ----warning = FALSE, fig.height = 5, fig.width = 6----------------------
-data("atp_elo")
-data("wta_elo")
+#data("atp_elo")
+#data("wta_elo")
 
 peak_atp_elo <- atp_elo %>%
     group_by(player_name) %>%
@@ -105,7 +105,7 @@ peak_elo %>%
   coord_flip()
 
 ## ----warning = FALSE, fig.height = 5, fig.width = 6----------------------
-data("atp_matches")
+#data("atp_matches")
 
 atp_2016 <- atp_matches %>%
   filter(year == 2016) %>%
@@ -185,7 +185,7 @@ atp_stats %>%
 ## ----warning = FALSE-----------------------------------------------------
 library(BradleyTerry2)
 
-data("wta_matches")
+#data("wta_matches")
 
 wta_matches <- wta_matches %>%
   filter(year == 2017, tourney_level %in% c("Grand Slams", "Premier","Premier Mandatory")) %>%
@@ -206,7 +206,7 @@ abilities <- BTabilities(fit)
 abilities[order(abilities[,1], decreasing = T),][1:20,]
 
 ## ----warning = FALSE, fig.height = 5, fig.width = 6----------------------
-data("gs_point_by_point")
+#data("gs_point_by_point")
 
 gs_point_by_point <- gs_point_by_point %>%
   dplyr::mutate(
@@ -226,7 +226,7 @@ gs_point_by_point %>%
   scale_y_continuous("Service Speed (MPH)", breaks = scales::pretty_breaks(n = 10)) 
 
 ## ----warning = FALSE, fig.height = 5, fig.width = 6----------------------
-data("mcp_points")
+#data("mcp_points")
 
 # Cound double faults as 1 shot
 mcp_points <- mcp_points %>%

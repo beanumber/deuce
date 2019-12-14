@@ -30,8 +30,6 @@ To find out about the datasets and functions included in `deuce`, you can use th
 
 Any of the individual datasets can be loaded with the `data` command. For example, the following command brings the `atp_matches` data into the R environment and runs a summary on all of the columns.
 
-`data(atp_matches)`
-
 `summary(atp_matches)`
 
 ## Updating the Datasets

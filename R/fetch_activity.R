@@ -90,7 +90,7 @@ fetch_activity <- function(player, year){
     lines <- readLines(site)
     
     #tourneys_start <- grep("categorystamps", lines)
-	tourneys_start <- grep("images/tourtypes", lines)
+	  tourneys_start <- grep("images/tourtypes", lines)
     tourneys_stop <- grep("This Event", lines)
 
     tournament_list <- mapply(function(x, y){lines[x:y]}, x= tourneys_start, y = tourneys_stop )

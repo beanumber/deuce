@@ -14,8 +14,6 @@ Description: A collection of data sources and tools for
 Depends:
     R (>= 2.10)
 Suggests: 
-    dplyr,
-    stringr
 VignetteBuilder: knitr    
 License: GPL-2
 LazyData: true
@@ -26,7 +24,7 @@ Imports:
     knitr, 
     rmarkdown,
     stringr,
-    scales, 
+    scales,
     rvest,
     jsonlite,
     rvest,
