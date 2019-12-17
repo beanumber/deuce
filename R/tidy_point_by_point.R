@@ -3,6 +3,7 @@
 #' @param data A data table containing point data
 #' 
 #' @export
+#' 
 tidy_point_by_point <- function(data){
 	
 	add_semicolon <- function(xstr){

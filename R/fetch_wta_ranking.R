@@ -24,11 +24,11 @@ fetch_wta_rankings <- function(min_rank = 1, max_rank = 100){
 
 	url <- "https://www.flashscore.com/tennis/rankings/wta/#"
 
-	webpage <- read_html(url)
+	webpage <- xml2::read_html(url)
 
 	table <- webpage %>% 
-		html_nodes(css = "table") %>%
-		html_table(header = T)
+	  rvest::html_nodes(css = "table") %>%
+		rvest::html_table(header = T)
 	
 	date <- today()
 		

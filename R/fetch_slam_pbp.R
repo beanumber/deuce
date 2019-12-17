@@ -2,9 +2,12 @@
 #'
 #' This function extracts historical point-by-point data for Grand Slam events
 #'
+#' @import jsonlite
+#' @importFrom rlang .data
+#' 
 #' @param event Character value of slam and one of: 'ausopen', 'wimbledon', 'usopen', or 'frenchopen'
 #' @param year Numeric year
-#'
+#' 
 #' @export
 #' 
 #' @details This has been tested for 2017. Previous years may not be available as data is archived or site domains have changed.
@@ -52,7 +55,7 @@ fetch_slam_pbp <- function(event, year){
 		
 		if(!is.null(lines)){
 	
-			x <- grep(id_pattern, lines, val = TRUE)
+			x <- grep(id_pattern, lines, value = TRUE)
 			
 			if(length(x) == 1)
 				x <- strsplit(x, "<")[[1]]
@@ -98,7 +101,7 @@ fetch_slam_pbp <- function(event, year){
 		names(keys) <- c("PointServer", "ServerName")
 		
 		data <- data %>%
-			dplyr::mutate(
+			mutate(
 				PointWinner = as.numeric(PointWinner),
 				PointServer = as.numeric(PointServer),
 				Set = as.numeric(SetNo),

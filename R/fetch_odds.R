@@ -3,7 +3,7 @@
 #' This function extracts official match data from Tennis-data.co.uk
 #' 
 #' @param atp Logical; True if Men's ATP match, False if not
-#'
+#' 
 #' @examples 
 #'  atp_odds <- fetch_odds(atp = T)
 #'  wta_odds <- fetch_odds(atp = F)
@@ -20,11 +20,11 @@ fetch_odds <- function(atp = T){
 	)
 	
 	
-	pages <- lapply(events, read_html)
+	pages <- lapply(events, xml2::read_html)
 	
 	csv_files <- lapply(pages, function(x){
-		refs <- x %>% html_nodes("a") %>% html_attr("href")
-	file.path("http://www.tennis-data.co.uk/", grep("[0-9][0-9][0-9][0-9].*csv", refs, val = T))
+		refs <- x %>% rvest::html_nodes("a") %>% rvest::html_attr("href")
+	file.path("http://www.tennis-data.co.uk/", grep("[0-9][0-9][0-9][0-9].*csv", refs, value = T))
 	})
 	
 	csv_files <- unlist(csv_files)

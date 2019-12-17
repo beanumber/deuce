@@ -6,13 +6,13 @@
 #' 
 fetch_repo_files <- function(url){
 	
-	page <- read_html(url) 
+	page <- xml2::read_html(url) 
 
 	files <- page %>%
-		html_nodes("td.content") %>%
-		html_nodes("a") %>%
-		html_attr("href")
+	  rvest::html_nodes("td.content") %>%
+	  rvest::html_nodes("a") %>%
+	  rvest::html_attr("href")
 	
 	# Returns CSV
-grep("\\.csv", files, val = T)
+grep("\\.csv", files, value = T)
 }

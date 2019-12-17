@@ -12,13 +12,13 @@ fetch_wta_tournaments <- function(...){
 	url <- "http://www.wtatennis.com/calendar"
 	
 	
-	page <- read_html(url)
+	page <- xml2::read_html(url)
 	
 	links <- page %>%
-		html_nodes(xpath = "//table[contains(@id, 'table-calendar')]") %>%
-		html_nodes("a")
+		rvest::html_nodes(xpath = "//table[contains(@id, 'table-calendar')]") %>%
+		rvest::html_nodes("a")
 		
-	links <- grep("/tournament/", links, fixed = T, val = T)
+	links <- grep("/tournament/", links, fixed = T, value = T)
 	links <- links[seq(1, length(links), by = 2)]
 	
 	site.url <- sub('(.*)(tournament.*)(".*)', "\\2", links)
@@ -31,8 +31,8 @@ fetch_wta_tournaments <- function(...){
 	)
 	
 	table <- page %>%
-		html_nodes(xpath = "//table[contains(@id, 'table-calendar')]") %>%
-		html_table(fill = T)
+		rvest::html_nodes(xpath = "//table[contains(@id, 'table-calendar')]") %>%
+		rvest::html_table(fill = T)
 	
 	table <- table[[1]]
 
@@ -60,18 +60,18 @@ fetch_wta_tournaments <- function(...){
 	# Event details
 	surface_draw <- function(x){
 			
-		page <- read_html(x)
+		page <- xml2::read_html(x)
 	
 		surface <- page %>%
-			html_node(xpath =  "//div[contains(@class, 'field-tournament-surface')]") %>%
-			html_text()
+			rvest::html_node(xpath =  "//div[contains(@class, 'field-tournament-surface')]") %>%
+			rvest::html_text()
 			
-		surface <- ifelse(grepl("hard", surface, ignore = T), "Hard",
-						ifelse(grepl("clay", surface, ignore = T), "Clay", "Grass"))
+		surface <- ifelse(grepl("hard", surface, ignore.case = T), "Hard",
+						ifelse(grepl("clay", surface, ignore.case = T), "Clay", "Grass"))
 			
 		draw <- page %>%
-			html_node(xpath =  "//div[contains(@class, 'field-draw-size-singles-main')]") %>%
-			html_text()
+		  rvest::html_node(xpath =  "//div[contains(@class, 'field-draw-size-singles-main')]") %>%
+		  rvest::html_text()
 				
 		draw <- as.numeric(sub("(.*\\:.)([0-9]+)", "\\2", draw))
 		

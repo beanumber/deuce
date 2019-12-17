@@ -4,10 +4,12 @@
 #'
 #' @param player Character name of ATP player
 #' @param year Numeric year or "all" for all years
+#' 
+#' @import utils
 #'
-#'@examples
-#' fetch_activity("Rafael Nadal", 2016)
-#' fetch_activity("Alexander Zverev", "all")
+#' @examples
+# fetch_activity("Rafael Nadal", 2016)
+# fetch_activity("Alexander Zverev", "all")
 #'
 #' @export
 #'
@@ -101,7 +103,7 @@ fetch_activity <- function(player, year){
         item_values <- grep("item-value", lines) 
 
 	
-        tournament_name <- grep("[A-Z]", lines[grep("tourney-title", lines):length(lines)], val = TRUE)[1] # First occurrence
+        tournament_name <- grep("[A-Z]", lines[grep("tourney-title", lines):length(lines)], value = TRUE)[1] # First occurrence
         tournament_name <- sub("(.*title.*>)(.*)(</a.*)", "\\2", tournament_name)
         tournament_name <- gsub("\t", "", tournament_name)
 
@@ -121,7 +123,7 @@ fetch_activity <- function(player, year){
 		prize_extract <- function(x){
 			numbers <- stringr::str_extract_all(x, "[0-9]")
 			numbers <- collapse(numbers[[1]])
-			location <- str_locate(x, "[0-9]")[1]
+			location <- stringr::str_locate(x, "[0-9]")[1]
 			currency <- substr(x, location - 1, location - 1)
 			if(currency == "#") currency <- "£"
 			if(grepl("A\\$", x)) currency <- "A$"
@@ -216,7 +218,7 @@ fetch_activity <- function(player, year){
             match_urls[walkover] <- NA
         }
         
-        event_line <- grep("activity-tournament-caption", lines, val = TRUE)
+        event_line <- grep("activity-tournament-caption", lines, value = TRUE)
 
         if(grepl("This Event Points: [0-9]", event_line))
             points <- sub("(.*This Event Points: )([0-9]+)(,.*)", "\\2", event_line)
@@ -250,7 +252,7 @@ fetch_activity <- function(player, year){
         if(length(matches) != length(Rounds))
             Rounds <- Rounds[1:length(matches)]
 
-        opponents <- sub("(.*>)([A-Z].*)(</a>.*)", "\\2", grep("mega-player-name.*>[^(Bye)]", lines, val = TRUE))
+        opponents <- sub("(.*>)([A-Z].*)(</a>.*)", "\\2", grep("mega-player-name.*>[^(Bye)]", lines, value = TRUE))
 
         # activity-tournament-caption
 

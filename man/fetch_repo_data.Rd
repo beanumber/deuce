@@ -7,7 +7,7 @@
 fetch_repo_data(file, ...)
 }
 \arguments{
-\item{file}{File path of desired csv}
+\item{file}{file path of desired csv}
 
 \item{...}{other options passed to fetch_repo_data}
 }

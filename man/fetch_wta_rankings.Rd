@@ -14,12 +14,12 @@ fetch_wta_rankings(min_rank = 1, max_rank = 100)
 \value{
 data frame of rankings for the specified week
 \itemize{
- \item player. Character name of player
- \item nation. Character name of player
- \item points. Numeric of ranking points
- \item tournaments. Numeric of tournaments played
- \item rank. Numeric rank
- \item date. Date object of Monday rankings were updated
+\item player. Character name of player
+\item nation. Character name of player
+\item points. Numeric of ranking points
+\item tournaments. Numeric of tournaments played
+\item rank. Numeric rank
+\item date. Date object of Monday rankings were updated
 }
 }
 \description{

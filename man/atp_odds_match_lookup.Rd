@@ -9,11 +9,11 @@ This dataset contains the match id and corresponding player and match id from th
 }
 \details{
 \itemize{
-  \item id. Character id for the match
-  \item winner_id. Character id for the winning player as in \code{atp_matches}.
-  \item loser_id. Character id for the losing player as in \code{atp_matches}.
-  \item tourney_id. Character id for the tournament as in \code{atp_matches}.
-  \item match_id. Character id for the match id as in \code{atp_matches}.
+\item id. Character id for the match
+\item winner_id. Character id for the winning player as in \code{atp_matches}.
+\item loser_id. Character id for the losing player as in \code{atp_matches}.
+\item tourney_id. Character id for the tournament as in \code{atp_matches}.
+\item match_id. Character id for the match id as in \code{atp_matches}.
 }
 
 If \code{match_id} is NA it means a certain match could not be found

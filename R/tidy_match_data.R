@@ -131,13 +131,13 @@ tidy_match_data <- function(data, atp = T){
 	
 	data$year <- year(data$tourney_start_date)
 	
-	data$round <- factor(data$round, level = c("BR", "Q1", "Q2", "Q3", "Q4",  "R1", "R128", "R62", "R63","R64", "R3", "R28", "R29","R31", "R32", "R15", "R16", "QF", "RR", "SF", "R7", "F"), order = T)
+	data$round <- factor(data$round, levels = c("BR", "Q1", "Q2", "Q3", "Q4",  "R1", "R128", "R62", "R63","R64", "R3", "R28", "R29","R31", "R32", "R15", "R16", "QF", "RR", "SF", "R7", "F"), ordered = T)
 	
 	data <- data[order(data$tourney_start_date, data$tourney_name, data$round),]
 	
 	data <- data %>%
 		group_by(tourney_start_date, tourney_name) %>%
-		dplyr::mutate(
+		mutate(
 			match_num = 1:n()
 		)
 	

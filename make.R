@@ -13,7 +13,6 @@ point_by_point <- do.call("rbind", lapply(files, function(x) fetch_repo_data(x, 
 point_by_point <- tidy_point_by_point(point_by_point)
 
 #save(point_by_point, file = file.path(package_root, "data/point_by_point.RData"))
-
 usethis::use_data(point_by_point, overwrite = TRUE, compress = "xz")
 
 

@@ -12,10 +12,10 @@ This dataset contains the ranking history of current and past players for the AT
 }
 \details{
 \itemize{
-  \item ranking_date. A numeric date of rank, YYYYYMMDD
-  \item ranking. A numeric rank
-  \item player_id. A numeric id to link players to other datasets
-  \item rankings_points. A numeric point value for rank
-  \item date. Date of ranking as POSIXct class
+\item ranking_date. A numeric date of rank, YYYYYMMDD
+\item ranking. A numeric rank
+\item player_id. A numeric id to link players to other datasets
+\item rankings_points. A numeric point value for rank
+\item date. Date of ranking as POSIXct class
 }
 }

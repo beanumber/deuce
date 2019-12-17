@@ -6,6 +6,10 @@
 #' @param min_rank A numeric for the highest ranked player to include
 #' @param max_rank A numeric for the lowest ranked player to include
 #' @param singles Logical; True if match is singles, False if not
+#' 
+#' @importFrom magrittr '%>%'
+#' @import dplyr
+#' @import lubridate
 #'
 #' @examples
 #' fetch_atp_rankings("2017-01-01")
@@ -29,17 +33,17 @@ fetch_atp_rankings <- function(date, min_rank = 1, max_rank = 100, singles = T){
 		weekday <- weekdays(date)
 		
 		if(weekday == "Sunday")		
-			date <- date + days(1)
+			date <- date + day(1)
 		else if(weekday == "Tuesday")
-			date <- date - days(1)
+			date <- date - day(1)
 		else if(weekday == "Wednesday")
-			date <- date - days(2)
+			date <- date - day(2)
 		else if(weekday == "Thursday")
-			date <- date - days(3)
+			date <- date - day(3)
 		else if(weekday == "Friday")
-			date <- date - days(4)
+			date <- date - day(4)
 		else if(weekday == "Saturday")
-			date <- date - days(5)	
+			date <- date - day(5)	
 		else	
 			date <- date
 			
@@ -58,7 +62,7 @@ fetch_atp_rankings <- function(date, min_rank = 1, max_rank = 100, singles = T){
 	url <- sub("DATE", date, url)
 	url <- sub("RANK", rank, url)
 	
-	rankings <- read_html(url) %>% html_nodes("table") %>%  html_table()
+	rankings <- xml2::read_html(url) %>% rvest::html_nodes("table") %>%  rvest::html_table()
 	rankings <- rankings[[1]]
 	
 	rankings$Date <- date
