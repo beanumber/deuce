@@ -5,8 +5,8 @@
 #' @param min_rank A numeric for the highest ranked player to include
 #' @param max_rank A numeric for the lowest ranked player to include
 #'
-#' @examples
-#' fetch_wta_rankings(1, 150)
+# @examples
+# fetch_wta_rankings(1, 100)
 #'
 #' @export
 #'
@@ -28,9 +28,9 @@ fetch_wta_rankings <- function(min_rank = 1, max_rank = 100){
 
 	table <- webpage %>% 
 	  rvest::html_nodes(css = "table") %>%
-		rvest::html_table(header = T)
+		rvest::html_table(header = TRUE)
 	
-	date <- today()
+	date <- lubridate::today()
 		
 	table <- table[[1]]
 

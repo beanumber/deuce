@@ -1,3 +1,4 @@
+#' import knitr
 ## ----setup, include = FALSE, warning = FALSE-----------------------------
 knitr::opts_chunk$set(echo = TRUE)
 

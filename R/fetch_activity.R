@@ -6,10 +6,8 @@
 #' @param year Numeric year or "all" for all years
 #' 
 #' @import utils
+#' @import dplyr
 #'
-#' @examples
-# fetch_activity("Rafael Nadal", 2016)
-# fetch_activity("Alexander Zverev", "all")
 #'
 #' @export
 #'

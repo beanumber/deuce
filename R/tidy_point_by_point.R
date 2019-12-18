@@ -44,7 +44,7 @@ tidy_point_by_point <- function(data){
 	add_semicolon <- Vectorize(add_semicolon)
 
 
-	data$tny_date <- dmy(data$date)
+	data$tny_date <- lubridate::dmy(data$date)
 
 	# Parse scores 
 	games_won <- sapply(strsplit(data$score, split = " "), function(x){

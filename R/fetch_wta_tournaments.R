@@ -46,12 +46,12 @@ fetch_wta_tournaments <- function(...){
 	
 	year <- sub("(.*\\()(....)(\\))", "\\2", table$Date)[1]
 	
-	table$start_date <- dmy(paste(substr(table$Date, 1, 6), year))
+	table$start_date <- lubridate::dmy(paste(substr(table$Date, 1, 6), year))
 		
-	table$start_date <- dmy(paste(substr(table$Date, 1, 6), year))	
-	table$start_date[yday(table$start_date) > 330] <- table$start_date[yday(table$start_date) > 330] - years(1)
+	table$start_date <- lubridate::dmy(paste(substr(table$Date, 1, 6), year))	
+	table$start_date[lubridate::yday(table$start_date) > 330] <- table$start_date[lubridate::yday(table$start_date) > 330] - year(1)
 	
-	table$end_date <- dmy(paste(substr(table$Date, 10, 16), year))
+	table$end_date <- lubridate::dmy(paste(substr(table$Date, 10, 16), year))
 	
 	table <- table %>% 
 		select(name, location, start_date, end_date) %>%

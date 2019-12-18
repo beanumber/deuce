@@ -18,7 +18,7 @@ Match win probability given serve and return performance and assuming points in 
 }
 \examples{
 match_win(serve = 0.65, return = 0.20) # Best of 3
-match_win(serve = 0.65, return = 0.20, bestof3 = F) # Best of 5
+match_win(serve = 0.65, return = 0.20, bestof3 = FALSE) # Best of 5
 }
 \references{
 O'Malley, A. J. (2008). Probability formulas and statistical analysis in tennis. Journal of Quantitative Analysis in Sports, 4(2).

@@ -14,8 +14,8 @@
 #' @param advantage Logical if advantage set match (TRUE) or tiebreak match (FALSE)
 #'
 #' @examples
-#' in_match_win(3, 2, 5, 5, 0, 0, 0.65, 0.63, bestof3 = T, advantage = F)
-#' in_match_win(2, 3, 5, 5, 0, 1, 0.65, 0.63, bestof3 = T, advantage = F)
+#' in_match_win(3, 2, 5, 5, 0, 0, 0.65, 0.63, bestof3 = TRUE, advantage = FALSE)
+#' in_match_win(2, 3, 5, 5, 0, 1, 0.65, 0.63, bestof3 = TRUE, advantage = FALSE)
 #'
 #' @references Barnett, T. (2013). Teaching probability theory through tennis. Strategic Games.
 #' @export

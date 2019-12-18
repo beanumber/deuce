@@ -95,7 +95,7 @@ matches <- do.call("rbind", lapply(grep("matches", files, val = T), function(x) 
 
 matches$Date[matches$match_id == "1990409-W-Amelia_Island-F-Steffi_Graf-Arantxa_Sanchez_Vicario"] <- "19900409"
 
-matches$match_date <- ymd(matches$Date)
+matches$match_date <- lubridate::ymd(matches$Date)
 
 points <- lapply(grep("points", files, val = T), function(x) fetch_repo_data(x, strings = FALSE, header = grepl("m-points", x), quote = ""))
 

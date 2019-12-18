@@ -45,8 +45,8 @@ Numeric probability that current server will win the match
 This function calculates the conditional match win prediction for matches in progress conditioned on the current score
 }
 \examples{
-in_match_win(3, 2, 5, 5, 0, 0, 0.65, 0.63, bestof3 = T, advantage = F)
-in_match_win(2, 3, 5, 5, 0, 1, 0.65, 0.63, bestof3 = T, advantage = F)
+in_match_win(3, 2, 5, 5, 0, 0, 0.65, 0.63, bestof3 = TRUE, advantage = FALSE)
+in_match_win(2, 3, 5, 5, 0, 1, 0.65, 0.63, bestof3 = TRUE, advantage = FALSE)
 
 }
 \references{

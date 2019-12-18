@@ -125,11 +125,13 @@ tidy_match_data <- function(data, atp = T){
 					"Historical"))		
 	}
 	
-	data$tourney_start_date <- ymd(data$tourney_date)
+	data$tourney_start_date <- lubridate::ymd(data$tourney_date)
 	
 	data$tourney_date <- NULL
 	
-	data$year <- year(data$tourney_start_date)
+	data <- data %>%
+	  mutate(year = lubridate::year(tourney_start_date))
+	#data$year <- year(data$tourney_start_date)
 	
 	data$round <- factor(data$round, levels = c("BR", "Q1", "Q2", "Q3", "Q4",  "R1", "R128", "R62", "R63","R64", "R3", "R28", "R29","R31", "R32", "R15", "R16", "QF", "RR", "SF", "R7", "F"), ordered = T)
 	

@@ -81,8 +81,12 @@ fetch_draw <- function(tournament, year, atp = TRUE){
 		stringsAsFactors = FALSE
 	)
 	
-	result$date <- ymd(result$date)
-	result$year <- year(result$date)
+	result <- result %>%
+	  mutate(date = lubridate::ymd(date)) %>%
+	  mutate(year = lubridate::year(date))
+	
+	#result$date <- lubridate::ymd(result$date)
+	#result$year <- year(result$date)
 	result$tournament <- tournament
 	
 result

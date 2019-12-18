@@ -4,7 +4,7 @@
 \alias{fetch_atp_rankings}
 \title{Download Rankings from ATP Tour Website}
 \usage{
-fetch_atp_rankings(date, min_rank = 1, max_rank = 100, singles = T)
+fetch_atp_rankings(date, min_rank = 1, max_rank = 100, singles = TRUE)
 }
 \arguments{
 \item{date}{A character date for extracting rankings, YYYY-MM-DD}
@@ -27,8 +27,4 @@ data frame of rankings for the specified week
 }
 \description{
 This function extracts ATP singles rankings for a particular date and ranking group
-}
-\examples{
-fetch_atp_rankings("2017-01-01")
-
 }

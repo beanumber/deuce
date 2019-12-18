@@ -30,7 +30,7 @@ tidy_player_data <- function(data){
 	
 	# Create full name and date
 	data$name <- paste(data$first_name, data$last_name)
-	data$dob <- ymd(data$birth_date)
+	data$dob <- lubridate::ymd(data$birth_date)
 	data$hand[data$hand == ""] <- "U"
 
 data

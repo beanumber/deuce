@@ -54,6 +54,3 @@ data frame of match activity and results
 \description{
 This function extracts match activity and results for ATP players
 }
-\examples{
-
-}

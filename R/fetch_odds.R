@@ -5,8 +5,8 @@
 #' @param atp Logical; True if Men's ATP match, False if not
 #' 
 #' @examples 
-#'  atp_odds <- fetch_odds(atp = T)
-#'  wta_odds <- fetch_odds(atp = F)
+#'  atp_odds <- fetch_odds(atp = TRUE)
+#'  wta_odds <- fetch_odds(atp = FALSE)
 #'
 #' @export
 #' 
@@ -46,7 +46,7 @@ fetch_odds <- function(atp = T){
 		x
 	}))
 	
-	data$Date <- dmy(data$Date)
+	data$Date <- lubridate::dmy(data$Date)
 	data$Location <- sub(" $", "", data$Location)
 	data$Tournament <- sub(" $", "", data$Tournament)
 	
