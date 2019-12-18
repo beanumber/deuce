@@ -27,3 +27,5 @@ Imports:
     utils,
     knitr,
     lubridate
+Suggests: 
+    rmarkdown
