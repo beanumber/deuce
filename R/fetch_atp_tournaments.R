@@ -26,7 +26,7 @@ fetch_atp_tournaments <- function(challenger = FALSE){
 			numbers <- collapse(numbers[[1]])
 			location <- stringr::str_locate(x, "[0-9]")[1]
 			currency <- substr(x, location - 1, location - 1)
-			if(currency == "#") currency <- "£"
+			if(currency == "#") currency <- iconv("\xa3", "latin1", "UTF-8")
 			if(grepl("A\\$", x)) currency <- "A$"
 		collapse(currency, numbers)
 		}

@@ -97,7 +97,7 @@ fetch_wta_tournaments <- function(...){
 	table$draw[table$name == "ROME Internazionali BNL dItalia"] <- 56
 	table$draw[table$name == "EASTBOURNE The International Eastbourne"] <- 48
 	table$draw[table$name == "SAN JOSE Mubadala Silicon Valley Classic"] <- 28
-	table$draw[table$name == "MONTREAL Coupe Rogers présentée par Banque Nationale"] <- 56
+	table$draw[table$name == iconv("MONTREAL Coupe Rogers pr\xe9sent\xe9e par Banque Nationale", "latin1", "UTF-8")] <- 56
 	table$draw[table$name == "CINCINNATI Western & Southern Open"] <- 56
 	table$draw[table$name == "NEW HAVEN Connecticut Open"] <- 30
 	table$draw[table$name == "HIROSHIMA Japan Womens Open Tennis"] <- 28
