@@ -17,9 +17,7 @@ knitr::opts_chunk$set(
 
 library(knitr)
 library(htmlTable)
-library(deuce)
-
-datasets <- data(package = "deuce")
+#library(deuce)
 ```
 
 ## Installation
@@ -44,11 +42,13 @@ There is 169 MB of tennis data included in the current version of the **deuce** 
 
 
 ```{r echo = FALSE}
+datasets <- data(package = "deuce")
+
 table <- datasets$results[,c("Item","Title")]
 
 colnames(table) <- c("Name", "Description")
 
-htmlTable(table, 
+htmlTable::htmlTable(table, 
           rnames = F, 
           col.rgroup = c("none", "#F7F7F7"),
           align = c("ll"),
@@ -78,6 +78,9 @@ library(scales)
 
 #data("atp_matches")
 #data("wta_matches")
+
+# outdated documentation
+#use of 'spread' and 'gather' need to be re-formatted into pivot-longer and pivot-wider'
 
 # Subset matches to first round at grand slams
 atp_matches <- atp_matches %>%
@@ -126,17 +129,13 @@ We can use the `atp_elo` and `wta_elo` datasets to answer this question. Althoug
 
 peak_atp_elo <- atp_elo %>%
     group_by(player_name) %>%
-    dplyr::summarise(
-      peak.elo = max(overall_elo, na.rm = T)
-    )
+    dplyr::summarise(peak.elo = max(overall_elo, na.rm = T))
 
 peak_atp_elo <- peak_atp_elo[order(peak_atp_elo$peak.elo, decreasing = T),][1:10,]
 
 peak_wta_elo <- wta_elo %>%
     group_by(player_name) %>%
-    dplyr::summarise(
-      peak.elo = max(overall_elo, na.rm = T)
-    )
+    dplyr::summarise(peak.elo = max(overall_elo, na.rm = T))
 
 peak_wta_elo <- peak_wta_elo[order(peak_wta_elo$peak.elo, decreasing = T),][1:10,]
 
@@ -165,7 +164,7 @@ On this measure, Novak Djokovic has achieved the highest Elo of any male player 
 One of the founders of sports statistics and a driving force behind the Moneyball phenomenon is Bill James. A key contribution James made to major league baseball was the _Pythagorean Theorem_. This theorem describes a relationship between a team's win expectations and their historical runs earned against opponents. Specifically, if a teams total runs earned up to a certain point in a season is `R` and their runs allowed to opponents is `RA` then the Pythagorean formula for their win expectation is:
 
 $$
-Win Expectation = \frac{R^2}{R^2 + RA^2}
+Win Expectation = \frac{R^2}{R^2 + (R*A^2)}
 $$
 
 It turns out that the exponent 1.8 actually performs a bit better, but the basic principle is the same. 
@@ -232,10 +231,10 @@ atp_2017 <- atp_2017 %>%
   )
 
 # Combine for player with more than 50 matches and grand slam appearance
-atp_stats <- merge(
-  atp_2016 %>% filter(n >= 50, slam),
-  atp_2017,
-  by = "player_name"
+atp_stats <- merge(atp_2016 %>% 
+                     filter(n >= 50, slam),
+                   atp_2017,
+                   by = "player_name"
 )
 
 atp_stats %>%
@@ -268,7 +267,7 @@ Thanks to the work of Heather Turner and David Firth we can use the `BradleyTerr
 Let's use the `wta matches` results at Grand Slam and Premier events to rate the ability of female players in 2017. Below we fit a basic model with player factors only an no covariates and use the `BTabilities` function to extract their relative latent abilities. 
 
 ```{r warning = FALSE}
-library(BradleyTerry2)
+#library(BradleyTerry2)
 
 #data("wta_matches")
 
@@ -283,9 +282,9 @@ player.levels <- unique(c(as.character(wta_matches$winner_name), as.character(wt
 wta_matches$winner_name <- factor(wta_matches$winner_name, levels = player.levels)
 wta_matches$loser_name <- factor(wta_matches$loser_name, levels = player.levels)
 
-fit <- BTm(wta_matches$outcome, wta_matches$winner_name, wta_matches$loser_name)
+fit <- BradleyTerry2::BTm(wta_matches$outcome, wta_matches$winner_name, wta_matches$loser_name)
 
-abilities <- BTabilities(fit)
+abilities <- BradleyTerry2::BTabilities(fit)
 
 # Top 20
 abilities[order(abilities[,1], decreasing = T),][1:20,]
@@ -370,7 +369,7 @@ table <- data.frame(
                    "Download ATP match activity", "Download ATP rankings", "Download ATP tournament calendar", "Download tournament draws", "Download player head to head results", "Download current WTA rankings", "Calculating point-by-point match win probabilities", "Calculate pre-match win probability")
 )
 
-htmlTable(table, 
+htmlTable:::htmlTable(table, 
           rnames = F, 
           col.rgroup = c("none", "#F7F7F7"),
           align = c("ll"),
@@ -420,9 +419,9 @@ Clay has been the most lopsided of the rivalry with Nadal having a massive edge.
 Because the package data won't be as up-to-date as tennis websites, the `fetch` functions can be used to get more recent tennis info. Below we show how, for example, we could call up the current WTA rankings using the `fetch_wta_rankings`.
 
 ```{r echo = FALSE}
-rankings <- fetch_wta_rankings(1, 100)
+#rankings <- fetch_wta_rankings(1, 100)
 
-rankings[1:10,]
+#rankings[1:10,]
 ```
 
 
