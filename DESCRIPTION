@@ -25,7 +25,12 @@ Imports:
     rvest,
     jsonlite,
     utils,
-    knitr,
-    lubridate
+    lubridate,
+    ggthemes,
+    scales,
+    tidyr,
+    htmlTable,
+    BradleyTerry2
 Suggests: 
-    rmarkdown
+    rmarkdown,
+    knitr
