@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 
 library(knitr)
 library(htmlTable)
-#library(deuce)
+library(deuce)
 ```
 
 ## Installation
@@ -70,9 +70,7 @@ Using Grand Slam results to define top players, we can look at the age character
 
 
 ```{r warning = FALSE, fig.height = 6, fig.width = 6}
-library(dplyr)
-library(tidyr)
-library(ggplot2)
+library(tidyverse)
 library(ggthemes)
 library(scales)
 

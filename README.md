@@ -1,4 +1,4 @@
-deuce
+deuce <img src="hex-deuce.png" width="120" align="right" />
 =====
 
 [![Build Status](https://travis-ci.org/kvanallen/deuce.svg?branch=master)](https://travis-ci.org/kvanallen/deuce)
