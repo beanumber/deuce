@@ -14,3 +14,8 @@ tidy_match_data(data, atp = T)
 \description{
 This function tidy's match data at the game level
 }
+\examples{
+\dontrun{
+wta_matches_tidy <- tidy_match_data(wta_matches, atp = F)
+} 
+}

@@ -5,9 +5,10 @@
 #' @param data A data table containing Match data
 #' @param atp Logical, TRUE if ATP match, FALSE if WTA match
 #' 
-#' @example 
-#'  wta_matches <- tidy_match_data(wta_matches, atp = F)
-#'   
+#' @examples
+#' \dontrun{
+#' wta_matches_tidy <- tidy_match_data(wta_matches, atp = F)
+#' } 
 #' @export
 #'
 tidy_match_data <- function(data, atp = T){

@@ -44,16 +44,16 @@ There is 169 MB of tennis data included in the current version of the **deuce** 
 ```{r echo = FALSE}
 datasets <- data(package = "deuce")
 
-table <- datasets$results[,c("Item","Title")]
+table <- datasets$results[, c("Item", "Title")]
 
 colnames(table) <- c("Name", "Description")
 
-htmlTable::htmlTable(table, 
-          rnames = F, 
-          col.rgroup = c("none", "#F7F7F7"),
-          align = c("ll"),
-          css.cell = "padding-left: 5%; padding-right:0%; padding-top: 2%;padding-bottom: 2%;width:40%;"
-          )
+htmlTable::htmlTable(table,
+  rnames = F,
+  col.rgroup = c("none", "#F7F7F7"),
+  align = c("ll"),
+  css.cell = "padding-left: 5%; padding-right:0%; padding-top: 2%;padding-bottom: 2%;width:40%;"
+)
 ```
 
 ## Dataset Examples
@@ -69,27 +69,23 @@ A major question of interest in the sport in recent times is aging. More players
 Using Grand Slam results to define top players, we can look at the age characteristics of players who made the main draw at Grand Slams over time. Because match formats and draw sizes at the Grand Slams have been consistent since the 1990s we limit the trends analysis to 1990 to the present. 
 
 
-```{r warning = FALSE, fig.height = 6, fig.width = 6}
+```{r warning = FALSE, message=FALSE, fig.height = 6, fig.width = 6}
 library(tidyverse)
 library(ggthemes)
-library(scales)
-
-#data("atp_matches")
-#data("wta_matches")
 
 # outdated documentation
-#use of 'spread' and 'gather' need to be re-formatted into pivot-longer and pivot-wider'
+# use of 'spread' and 'gather' need to be re-formatted into pivot-longer and pivot-wider'
 
 # Subset matches to first round at grand slams
 atp_matches <- atp_matches %>%
-    filter(tourney_level == "Grand Slams", round == "R128", year >= 1990)
+  filter(tourney_level == "Grand Slams", round == "R128", year >= 1990)
 
 atp_age <- atp_matches %>%
   select(year, winner_age, loser_age) %>%
   gather("player", "age", winner_age, loser_age)
 
 wta_matches <- wta_matches %>%
-    filter(tourney_level == "Grand Slams", round == "R128", year >= 1990)
+  filter(tourney_level == "Grand Slams", round == "R128", year >= 1990)
 
 wta_age <- wta_matches %>%
   select(year, winner_age, loser_age) %>%
@@ -102,12 +98,12 @@ ages <- rbind(atp_age, wta_age)
 
 ages %>%
   filter(!is.na(age)) %>%
-  ggplot(aes(y = age, x = year, colour = tour)) + 
-  stat_summary(fun.data = "mean_se", geom = "pointrange") + 
-  scale_colour_tableau(name = "") + 
-  theme_gdocs() + theme(legend.position = "bottom", legend.direction = "horizontal") + 
-  scale_y_continuous("Mean Age (SE)", breaks = scales::pretty_breaks(n = 10)) + 
-  scale_x_continuous("Year", breaks = scales::pretty_breaks(n = 10)) + 
+  ggplot(aes(y = age, x = year, colour = tour)) +
+  stat_summary(fun.data = "mean_se", geom = "pointrange") +
+  scale_colour_tableau(name = "") +
+  theme_gdocs() + theme(legend.position = "bottom", legend.direction = "horizontal") +
+  scale_y_continuous("Mean Age (SE)", breaks = scales::pretty_breaks(n = 10)) +
+  scale_x_continuous("Year", breaks = scales::pretty_breaks(n = 10)) +
   ggtitle("Aging Trends Among Grand Slam Players")
 ```
 
@@ -122,36 +118,36 @@ Because Elo ratings are constantly changing as players complete matches, we can 
 We can use the `atp_elo` and `wta_elo` datasets to answer this question. Although the dataset includes surface-specific Elo, we will use the all-surface overall Elo ratings for this analysis.
 
 ```{r warning = FALSE, fig.height = 5, fig.width = 6}
-#data("atp_elo")
-#data("wta_elo")
+# data("atp_elo")
+# data("wta_elo")
 
 peak_atp_elo <- atp_elo %>%
-    group_by(player_name) %>%
-    dplyr::summarise(peak.elo = max(overall_elo, na.rm = T))
+  group_by(player_name) %>%
+  summarise(peak.elo = max(overall_elo, na.rm = T))
 
-peak_atp_elo <- peak_atp_elo[order(peak_atp_elo$peak.elo, decreasing = T),][1:10,]
+peak_atp_elo <- peak_atp_elo[order(peak_atp_elo$peak.elo, decreasing = T), ][1:10, ]
 
 peak_wta_elo <- wta_elo %>%
-    group_by(player_name) %>%
-    dplyr::summarise(peak.elo = max(overall_elo, na.rm = T))
+  group_by(player_name) %>%
+  summarise(peak.elo = max(overall_elo, na.rm = T))
 
-peak_wta_elo <- peak_wta_elo[order(peak_wta_elo$peak.elo, decreasing = T),][1:10,]
+peak_wta_elo <- peak_wta_elo[order(peak_wta_elo$peak.elo, decreasing = T), ][1:10, ]
 
 peak_atp_elo$tour <- "ATP"
 peak_wta_elo$tour <- "WTA"
 
 peak_elo <- rbind(peak_atp_elo, peak_wta_elo)
 
-peak_elo$player_name <- factor(peak_elo$player_name, levels = peak_elo$player_name[order(peak_elo$peak.elo)], order = T) 
+peak_elo$player_name <- factor(peak_elo$player_name, levels = peak_elo$player_name[order(peak_elo$peak.elo)], order = T)
 
 peak_elo %>%
-  ggplot(aes(y = peak.elo, x = player_name, colour = tour)) + 
-  facet_wrap(~ tour, scales = "free") + 
+  ggplot(aes(y = peak.elo, x = player_name, colour = tour)) +
+  facet_wrap(~tour, scales = "free") +
   geom_point(size = 2) +
-  scale_color_tableau() + 
-  theme_gdocs() + theme(legend.position = "none") + 
-  scale_y_continuous("Career Peak Elo") + 
-  scale_x_discrete("") + 
+  scale_color_tableau() +
+  theme_gdocs() + theme(legend.position = "none") +
+  scale_y_continuous("Career Peak Elo") +
+  scale_x_discrete("") +
   coord_flip()
 ```
 
@@ -176,11 +172,11 @@ For recent years, the `atp_matches` provides several match-level summary stats. 
 In the code below, we consider the Pythagorean relationship of each stat in 2016 with the win records in 2017. To remove less competitive players from full-time professionals, we limit the assessment to players with 50 matches or more played and who appeared in at least one Grand Slam event.
 
 ```{r warning = FALSE, fig.height = 5, fig.width = 6}
-#data("atp_matches")
+# data("atp_matches")
 
 atp_2016 <- atp_matches %>%
   filter(year == 2016) %>%
-  dplyr::mutate(
+  mutate(
     winner.serve.won = w_1stWon + w_2ndWon,
     loser.serve.won = l_1stWon + l_2ndWon,
     winner.points.won = (l_svpt - (loser.serve.won)) + winner.serve.won,
@@ -202,7 +198,7 @@ atp_2016 <- rbind(atp_2016_winner, atp_2016_loser)
 
 atp_2016 <- atp_2016 %>%
   group_by(match_id) %>%
-  dplyr::mutate(
+  mutate(
     opponent.points.won = player.points.won[2:1],
     opponent.breaks.won = player.breaks.won[2:1]
   )
@@ -210,7 +206,7 @@ atp_2016 <- atp_2016 %>%
 atp_2016 <- atp_2016 %>%
   filter(!is.na(player.points.won)) %>%
   group_by(player_name) %>%
-  dplyr::summarise(
+  summarise(
     n = n(),
     slam = any(tourney_level == "Grand Slams"),
     pythag.points = sum(player.points.won)^2 / (sum(player.points.won)^2 + sum(opponent.points.won)^2),
@@ -224,33 +220,33 @@ atp_2017 <- atp_matches %>%
 
 atp_2017 <- atp_2017 %>%
   group_by(player_name) %>%
-  dplyr::summarise(
+  summarise(
     wins = mean(result == "winner_name")
   )
 
 # Combine for player with more than 50 matches and grand slam appearance
-atp_stats <- merge(atp_2016 %>% 
-                     filter(n >= 50, slam),
-                   atp_2017,
-                   by = "player_name"
+atp_stats <- merge(atp_2016 %>%
+  filter(n >= 50, slam),
+atp_2017,
+by = "player_name"
 )
 
 atp_stats %>%
-  ggplot(aes(y = wins * 100, x = pythag.points * 100)) + 
-  geom_point(size = 2, col = tableau_color_pal()(2)[1]) + 
- geom_smooth(method = "lm", level = 0, col = tableau_color_pal()(2)[1], alpha = 0.5) +  
-  scale_y_continuous("2017 Win Percentage", lim = c(0, 100)) + 
-  scale_x_continuous("2016 Pythagorean Expectation", lim = c(0, 100)) + 
-  theme_bw() + 
+  ggplot(aes(y = wins * 100, x = pythag.points * 100)) +
+  geom_point(size = 2, col = tableau_color_pal()(2)[1]) +
+  geom_smooth(method = "lm", level = 0, col = tableau_color_pal()(2)[1], alpha = 0.5) +
+  scale_y_continuous("2017 Win Percentage", lim = c(0, 100)) +
+  scale_x_continuous("2016 Pythagorean Expectation", lim = c(0, 100)) +
+  theme_bw() +
   ggtitle("Pythagorean for Points Won")
 
 atp_stats %>%
-  ggplot(aes(y = wins * 100, x = pythag.breaks * 100)) + 
-  geom_point(size = 2, col = tableau_color_pal()(2)[2]) + 
+  ggplot(aes(y = wins * 100, x = pythag.breaks * 100)) +
+  geom_point(size = 2, col = tableau_color_pal()(2)[2]) +
   geom_smooth(method = "lm", level = 0, col = tableau_color_pal()(2)[2], alpha = 0.5) +
-  scale_y_continuous("2017 Win Percentage", lim = c(0, 100)) + 
-  scale_x_continuous("2016 Pythagorean Expectation", lim = c(0, 100)) + 
-  theme_bw() + 
+  scale_y_continuous("2017 Win Percentage", lim = c(0, 100)) +
+  scale_x_continuous("2016 Pythagorean Expectation", lim = c(0, 100)) +
+  theme_bw() +
   ggtitle("Pythagorean for Break Points Won")
 ```
 
@@ -265,18 +261,18 @@ Thanks to the work of Heather Turner and David Firth we can use the `BradleyTerr
 Let's use the `wta matches` results at Grand Slam and Premier events to rate the ability of female players in 2017. Below we fit a basic model with player factors only an no covariates and use the `BTabilities` function to extract their relative latent abilities. 
 
 ```{r warning = FALSE}
-#library(BradleyTerry2)
+# library(BradleyTerry2)
 
-#data("wta_matches")
+# data("wta_matches")
 
 wta_matches <- wta_matches %>%
-  filter(year == 2017, tourney_level %in% c("Grand Slams", "Premier","Premier Mandatory")) %>%
-  dplyr::mutate(
+  filter(year == 2017, tourney_level %in% c("Grand Slams", "Premier", "Premier Mandatory")) %>%
+  mutate(
     outcome = 1
   )
 
 player.levels <- unique(c(as.character(wta_matches$winner_name), as.character(wta_matches$loser_name)))
-  
+
 wta_matches$winner_name <- factor(wta_matches$winner_name, levels = player.levels)
 wta_matches$loser_name <- factor(wta_matches$loser_name, levels = player.levels)
 
@@ -285,7 +281,7 @@ fit <- BradleyTerry2::BTm(wta_matches$outcome, wta_matches$winner_name, wta_matc
 abilities <- BradleyTerry2::BTabilities(fit)
 
 # Top 20
-abilities[order(abilities[,1], decreasing = T),][1:20,]
+abilities[order(abilities[, 1], decreasing = T), ][1:20, ]
 ```
 
 We see a lot of familiar names. Serena Williams takes the top position, though there is a lot of uncertainty in her result as she played and won only one event, the Australian Open, in 2017.
@@ -295,24 +291,25 @@ We see a lot of familiar names. Serena Williams takes the top position, though t
 As much fun as match statistics are, they don't give us a real feel for the physical power of the professional game. One power stat that we have more public data on than any other are service speeds. In the **deuce** package, thanks to data provided by _The Tennis Abstract_, service speed data is available for the past several years at the Grand Slams. We can use this to look at how speeds differ between first and second serves and the men's and women's tours.
 
 ```{r warning = FALSE, fig.height = 5, fig.width = 6}
-#data("gs_point_by_point")
+# data("gs_point_by_point")
 
 gs_point_by_point <- gs_point_by_point %>%
-  dplyr::mutate(
+  mutate(
     ServeNumber = ifelse((is.na(ServeNumber) | ServeNumber == 0) &
-                         (P1FirstSrvIn == 1 | P2FirstSrvIn == 1), 1,
-                         ifelse((is.na(ServeNumber) | ServeNumber == 0), 2, ServeNumber))
+      (P1FirstSrvIn == 1 | P2FirstSrvIn == 1), 1,
+    ifelse((is.na(ServeNumber) | ServeNumber == 0), 2, ServeNumber)
+    )
   )
 
 
-#gs_point_by_point %>%
-  #filter(!is.na(ServeNumber), Speed_MPH != 0) %>%
-  #ggplot(aes(y = Speed_MPH, x = tour, fill = tour)) + 
-  #geom_boxplot(alpha = 0.5) + 
-  #scale_fill_tableau() + 
-  #theme_gdocs() + theme(legend.position = "none") + 
-  #facet_grid(. ~ factor(ServeNumber, labels = c("First Serve", "Second Serve"))) + 
-  #scale_y_continuous("Service Speed (MPH)", breaks = scales::pretty_breaks(n = 10)) 
+# gs_point_by_point %>%
+# filter(!is.na(ServeNumber), Speed_MPH != 0) %>%
+# ggplot(aes(y = Speed_MPH, x = tour, fill = tour)) +
+# geom_boxplot(alpha = 0.5) +
+# scale_fill_tableau() +
+# theme_gdocs() + theme(legend.position = "none") +
+# facet_grid(. ~ factor(ServeNumber, labels = c("First Serve", "Second Serve"))) +
+# scale_y_continuous("Service Speed (MPH)", breaks = scales::pretty_breaks(n = 10))
 ```
 
 These summaries suggest that first serve speed are generally around 115 mph for men and 108 for women. Both tours serve notably slower on the second serve, dropping about 20 mph on average. This reflects the more conservative nature of the second server.
@@ -327,11 +324,11 @@ The [Match Charting Project](http://www.tennisabstract.com/charting/meta.html) i
 
 
 ```{r warning = FALSE, fig.height = 5, fig.width = 6}
-#data("mcp_points")
+# data("mcp_points")
 
 # Cound double faults as 1 shot
 mcp_points <- mcp_points %>%
-  dplyr::mutate(
+  mutate(
     year = as.numeric(substr(match_id, 1, 4)),
     ATP = ifelse(grepl("[0-9]-M-", match_id), "ATP", "WTA"),
     rallyCount = as.numeric(ifelse(rallyCount == 0, 1, rallyCount))
@@ -339,14 +336,14 @@ mcp_points <- mcp_points %>%
   filter(year >= 2000, !is.na(rallyCount))
 
 mcp_points %>%
-  ggplot(aes(y = rallyCount, x = year, fill = ATP, colour = ATP)) + 
-  geom_smooth(alpha = 0.3) + 
-  scale_fill_tableau(name = "") + 
-  scale_colour_tableau(name = "") + 
-  scale_y_continuous("Rally Length", breaks = scales::pretty_breaks(n = 10)) + 
-  scale_x_continuous("", breaks = scales::pretty_breaks(n = 10)) + 
-  expand_limits(y = 1) + 
-  theme_gdocs() + theme(legend.position = "bottom", legend.direction = "horizontal") + 
+  ggplot(aes(y = rallyCount, x = year, fill = ATP, colour = ATP)) +
+  geom_smooth(alpha = 0.3) +
+  scale_fill_tableau(name = "") +
+  scale_colour_tableau(name = "") +
+  scale_y_continuous("Rally Length", breaks = scales::pretty_breaks(n = 10)) +
+  scale_x_continuous("", breaks = scales::pretty_breaks(n = 10)) +
+  expand_limits(y = 1) +
+  theme_gdocs() + theme(legend.position = "bottom", legend.direction = "horizontal") +
   ggtitle("Rally Length Trends")
 ```
 
@@ -360,20 +357,23 @@ The following table provides an overview of the **deuce** functions. The example
 
 ```{r echo = FALSE}
 table <- data.frame(
-  Name = c("elo_prediction", "fetch_activity", "fetch_atp_rankings", "fetch_atp_tournaments", 
-"fetch_draw", "fetch_head_to_head", "fetch_wta_rankings", "in_match_win", 
-"match_win"),
-  Description = c("Predict match outcomes based on Elo ratings",
-                   "Download ATP match activity", "Download ATP rankings", "Download ATP tournament calendar", "Download tournament draws", "Download player head to head results", "Download current WTA rankings", "Calculating point-by-point match win probabilities", "Calculate pre-match win probability")
+  Name = c(
+    "elo_prediction", "fetch_activity", "fetch_atp_rankings", "fetch_atp_tournaments",
+    "fetch_draw", "fetch_head_to_head", "fetch_wta_rankings", "in_match_win",
+    "match_win"
+  ),
+  Description = c(
+    "Predict match outcomes based on Elo ratings",
+    "Download ATP match activity", "Download ATP rankings", "Download ATP tournament calendar", "Download tournament draws", "Download player head to head results", "Download current WTA rankings", "Calculating point-by-point match win probabilities", "Calculate pre-match win probability"
+  )
 )
 
-htmlTable:::htmlTable(table, 
-          rnames = F, 
-          col.rgroup = c("none", "#F7F7F7"),
-          align = c("ll"),
-          css.cell = "padding-left: 5%; padding-right:0%; padding-top: 2%;padding-bottom: 2%;width:40%;"
-          )
-
+htmlTable:::htmlTable(table,
+  rnames = F,
+  col.rgroup = c("none", "#F7F7F7"),
+  align = c("ll"),
+  css.cell = "padding-left: 5%; padding-right:0%; padding-top: 2%;padding-bottom: 2%;width:40%;"
+)
 ```
 
 ### Example 1. Fedal rivalry
@@ -396,16 +396,16 @@ In a rivalry that is now `r nrow(fedal)` matches strong, who has had the most wi
 results <- fedal %>%
   gather("result", "player", winner:loser) %>%
   group_by(player, surface) %>%
-  dplyr::summarise(
+  summarise(
     wins = sum(result == "winner"),
     losses = sum(result == "loser")
   )
 
-results[order(results$wins, decreasing = T),]
+results[order(results$wins, decreasing = T), ]
 
-results %>% 
+results %>%
   group_by(player) %>%
-  dplyr::summarise(
+  summarise(
     wins = sum(wins)
   )
 ```
@@ -417,9 +417,9 @@ Clay has been the most lopsided of the rivalry with Nadal having a massive edge.
 Because the package data won't be as up-to-date as tennis websites, the `fetch` functions can be used to get more recent tennis info. Below we show how, for example, we could call up the current WTA rankings using the `fetch_wta_rankings`.
 
 ```{r echo = FALSE}
-#rankings <- fetch_wta_rankings(1, 100)
+# rankings <- fetch_wta_rankings(1, 100)
 
-#rankings[1:10,]
+# rankings[1:10,]
 ```
 
 
@@ -447,14 +447,16 @@ params$win <- mapply(
 )
 
 params %>%
-  ggplot(aes(y = win * 100, x = opponent * 100, 
-             col = factor(bestof3, labels = c("best of 5", "best of 3")))) + 
-           geom_line() + 
-           scale_colour_tableau(name = "Format") +
-           theme_gdocs() + 
-          scale_y_continuous("Match Win %") + 
-          scale_x_continuous("Opponent Serve Win %") + 
-           theme(legend.position = "bottom")
+  ggplot(aes(
+    y = win * 100, x = opponent * 100,
+    col = factor(bestof3, labels = c("best of 5", "best of 3"))
+  )) +
+  geom_line() +
+  scale_colour_tableau(name = "Format") +
+  theme_gdocs() +
+  scale_y_continuous("Match Win %") +
+  scale_x_continuous("Opponent Serve Win %") +
+  theme(legend.position = "bottom")
 ```
 
 In this range, for a player serving 65% the win chances change linearly with the opponent's serve ability. We see that the player who has the better serve win % is the favored player and the advantage is greater in a best of 5 match compared to a best of 3. 

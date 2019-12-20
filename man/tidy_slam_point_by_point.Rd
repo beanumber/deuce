@@ -14,3 +14,8 @@ tidy_slam_point_by_point(points, matches)
 \description{
 This function takes two data sets and returns a combined data set with every point in every match
 }
+\examples{
+\dontrun{
+tidy_slam_point_by_point(point_by_point, point_by_matches)
+}
+}

@@ -4,9 +4,10 @@
 #' 
 #' @param data A data table containing player data
 #' 
-#' @example 
-#'  atp_rankings <- tidy_rankings_data(atp_rankings)
-#' 
+#' @examples
+#' \dontrun{
+#' atp_rankings <- tidy_rankings_data(atp_rankings)
+#' }
 #' @export
 #' 
 tidy_player_data <- function(data){

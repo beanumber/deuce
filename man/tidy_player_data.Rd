@@ -12,3 +12,8 @@ tidy_player_data(data)
 \description{
 This function tidy's the player's name to by uniform across all imported data
 }
+\examples{
+\dontrun{
+atp_rankings <- tidy_rankings_data(atp_rankings)
+}
+}

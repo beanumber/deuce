@@ -6,9 +6,10 @@
 #' @param points A data set with detail of every point in a match
 #' @param matches A data set with detail of every match
 #' 
-#' @example
-#'  tidy_slam_point_by_point(point_by_point, point_by_matches)
-#'    
+#' @examples
+#' \dontrun{
+#' tidy_slam_point_by_point(point_by_point, point_by_matches)
+#' }
 #' @export
 tidy_slam_point_by_point <- function(points, matches){
 	
